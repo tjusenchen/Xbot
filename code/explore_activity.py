@@ -12,12 +12,9 @@ act_paras_file = ''
 defined_pkg_name = ''
 used_pkg_name = ''
 
-
 # def device_is_running():
 #     cmd = "adb devices"
 #     msg = commands.getoutput(cmd)
-
-
 
 def installAPP(new_apkpath, apk_name, results_folder):
 
@@ -81,6 +78,7 @@ def clean_tmp_folder(folder):
         # os.remove(file)
 
 def unzip(zipfile, activity):
+
     '''unzip result file and delete zip file'''
     cmd = 'unzip -o "%s" -d "%s"' % (zipfile, zipfile.split('.zip')[0])
     os.system(cmd)
@@ -213,6 +211,7 @@ def explore(activity, appname, results_folder, results_outputs):
         #os.system(adb + ' shell input tap 165 930')
         #time.sleep(1)
         return
+
     if current == 'normal':
         scan_and_return()
         collect_results(activity, appname, results_folder, results_outputs)
@@ -229,6 +228,7 @@ def init_d(activity, d):
     return d
 
 def extract_activity_action(path):
+
     # {activity1: {actions: action1, category: cate1}}
     # new format: {activity: [[action1, category1],[action2, category2]]}
     d = {}
@@ -293,7 +293,6 @@ def convert(api, key, extras):
     if api == 'getLong' or api == 'getLongArray':
         extras = extras + ' --el ' + key + ' 1'
     return extras
-
 
 def get_act_extra_paras(activity):
     for line in open(act_paras_file,'r').readlines():
@@ -383,6 +382,7 @@ def parseManifest(new_apkpath, apk_name, results_folder, decompilePath, results_
 
     if not os.path.exists(results_outputs + '/' + apk_name + '/screenshot'):
         return
+
     # get some statistics
     launched_act_num = int(
         commands.getoutput('ls %s | wc -l' % (results_outputs + '/' + apk_name + '/screenshot')).split('\n')[0])

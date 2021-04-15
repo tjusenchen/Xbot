@@ -1,23 +1,23 @@
 import commands
 import csv
 import os
-import repkgApp
-import exploreAct_xbot
+import repkg_apk
+import explore_activity
 import shutil
 import sys
 
-#emulator = sys.argv[1] # Emulator name
-#emulator = '192.168.57.106:5555'
-emulator = 'emulator-5554'
+emulator = sys.argv[1] # Emulator name
+#emulator = '192.168.57.106:5555' # Genymotion emulator
+#emulator = 'emulator-5554' # Android Studio emulator
 
-#apkPath = sys.argv[2] # APK folder
+apkPath = sys.argv[2] # APK folder
 #apkPath = "/home/senchen/Desktop/xbot/apks-101/"  # Store the original app
-apkPath = "/Users/chensen/Tools/xbot/icse-mulapks/"
+#apkPath = "/Users/chensen/Tools/xbot/icse-mulapks/"
 #apkPath = "/home/senchen/Desktop/uicrawler/apks/"  # Store the original app
 #apkPath = "/home/dell/Tools/Xbot/apks-1/"
 
 #java_home_path = '/home/dell/tools/jdk1.8.0_45'
-#java_home_path = '/usr/lib/jvm/jdk1.8.0_45' #For Ubuntu
+#java_home_path = '/usr/lib/jvm/jdk1.8.0_45' # For Ubuntu
 java_home_path = '/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/' # For Macbook
 
 #sdk_platform_path = '/home/dell/Tools/Xbot/config/libs/android-platforms/'
@@ -66,7 +66,8 @@ def execute(apk_path, apk_name):
 
     # Repackge app
     if not os.path.exists(os.path.join(repackagedAppPath, apk_name + '.apk')):
-        r = repkgApp.startRepkg(apk_path, apk_name, results_folder, config_folder)
+        r = repkg_apk.startRepkg(apk_path, apk_name, results_folder, config_folder)
+
         if r == 'no manifest file' or r == 'build error' or  r == 'sign error':
             print 'apk not successfully recompiled! will use the original app to execute'
 
@@ -75,7 +76,8 @@ def execute(apk_path, apk_name):
     if os.path.exists(new_apkpath):
         #if 'Xbot' in results_folder:
             ### Xbot, note that the para is results_folder instead of accessibility_folder
-        exploreAct_xbot.exploreActivity(new_apkpath, apk_name, results_folder, emulator, tmp_file, paras_path)
+
+        explore_activity.exploreActivity(new_apkpath, apk_name, results_folder, emulator, tmp_file, paras_path)
         # else:
         #     ### UICrawler, note that the para is results_folder instead of accessibility_folder
         #     exploreAct_uicrawler.exploreActivity(new_apkpath, apk_name, results_folder, emulator, tmp_file, paras_path)
@@ -119,12 +121,14 @@ if __name__ == '__main__':
                                                  'act_not_launched','act_num_with_issue'))
 
     for apk in os.listdir(apkPath): # Run the apk one by one
+
         if not 'apks' in apk and 'apk' in apk:
 
-            root = 'adb -s %s root' % (emulator)
+            root = 'adb -s %s root' % (emulator) # root the emulator before running
             print commands.getoutput(root)
 
             apk_path = os.path.join(apkPath, apk) # Get apk path
+
             apk_name = apk.rstrip('.apk') # Get apk name
             pkg = get_pkg(apk_path) # Get pkg, this version has a problem about pkg, may inconsist to the real pkg
 
@@ -135,12 +139,16 @@ if __name__ == '__main__':
 
             global paras_path
             paras_path = storydroid_folder + '/outputs/' + apk_name + '/activity_paras.txt'
+
             if not os.path.exists(storydroid_folder + '/outputs/' + apk_name):
                 os.mkdir(storydroid_folder + '/outputs/' + apk_name)
             if not os.path.exists(paras_path):
                 ## os.mknod(paras_path) # It is not avaiable for macbook
                 open(paras_path, 'w').close()
 
+            '''
+            Core
+            '''
             execute(apk_path, apk_name)
 
             if os.path.exists(apk_path):
