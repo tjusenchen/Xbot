@@ -21,4 +21,5 @@ Python run_xbot.py [emulator_name] [apk(s)_folder]
 The accessibility issues detected by Xbot and used in our study: https://drive.google.com/drive/folders/1rTJfn_8cXaNsdoYBRNGIcuYhOPrZ6vEv?usp=sharing
 
 # Website
+Accessibility issue gallery and samples:
 https://sites.google.com/view/mobile-accessibility/
