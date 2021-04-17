@@ -3,9 +3,13 @@ We have made the source code of Xbot and the corresponding dataset publicly avai
 
 ## Environment Configuration
 Python: 2.7
+
 APKTool: 2.4.1
+
 Android Emulator：X86, Android 7.1.1, Google APIs, 1920 * 1080
+
 Android environment: adb, aapt
+
 Soot
 
 ## Usage
