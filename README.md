@@ -8,11 +8,11 @@ Python: 2.7
 
 APKTool: 2.4.1
 
-Android Emulator：X86, Android 7.1.1, Google APIs, 1920 * 1080
+Android emulator：X86, Android 7.1.1, Google APIs, 1920 * 1080
 
 Android environment: adb, aapt
 
-Soot
+Java environment (jdk): jdk1.8.0_45
 
 ## Usage
 Python run_xbot.py [emulator_name] [apk(s)_folder]
