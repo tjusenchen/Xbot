@@ -17,9 +17,11 @@ Java environment (jdk): jdk1.8.0_45
 ## Usage
 Python run_xbot.py [emulator_name] [apk(s)_folder]
 
-# Dataset
+## Dataset
 The accessibility issues detected by Xbot and used in our study: https://drive.google.com/drive/folders/1rTJfn_8cXaNsdoYBRNGIcuYhOPrZ6vEv?usp=sharing
 
-# Website
+## Website
 Accessibility issue gallery and samples:
 https://sites.google.com/view/mobile-accessibility/
+
+## Paper
