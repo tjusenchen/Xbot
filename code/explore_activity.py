@@ -1,3 +1,8 @@
+'''
+
+Authors: Sen Chen and Lingling Fan
+'''
+
 import os, commands, shutil
 import time, csv
 
@@ -12,16 +17,9 @@ act_paras_file = ''
 defined_pkg_name = ''
 used_pkg_name = ''
 
-# def device_is_running():
-#     cmd = "adb devices"
-#     msg = commands.getoutput(cmd)
-
 def installAPP(new_apkpath, apk_name, results_folder):
 
-    #device_is_running()
-
     appPath = new_apkpath
-
     get_pkgname(appPath)
 
     cmd = adb + " install -r " + appPath
@@ -33,6 +31,7 @@ def installAPP(new_apkpath, apk_name, results_folder):
             csv.writer(open(os.path.join(results_folder, 'installError.csv'),'ab')).writerow((apk_name, out.replace('\n', ', ')))
             return 'Failure'
     print 'Install Success'
+
     return 'Success'
 
 def uninstallApp(package):
@@ -51,11 +50,13 @@ def uninstallApp(package):
 #     os.chdir(path)
 
 def scan_and_return():
+
     time.sleep(1)
 
     # scan and share
     #os.system(adb + ' shell input tap 110 170')
     #945,1650
+
     os.system(adb + ' shell input tap 945 1650')
     time.sleep(5)
     os.system(adb + ' shell input tap 910 128')
@@ -97,10 +98,11 @@ def unzip(zipfile, activity):
                 os.system(mv_cmd)
 
 def collect_results(activity, appname, accessbility_folder, results_outputs):
-    scanner_pkg = 'com.google.android.apps.accessibility.auditor'
-    print 'collecting scan results from device...'
 
-    # to save issues and screenshot temporarily in order to rename.
+    scanner_pkg = 'com.google.android.apps.accessibility.auditor'
+    print 'Collecting scan results from device...'
+
+    # To save issues and screenshot temporarily in order to rename.
     tmp_folder = os.path.join(accessbility_folder, tmp_dir)
     if not os.path.exists(tmp_folder):
         os.mkdir(tmp_folder)
@@ -115,7 +117,6 @@ def collect_results(activity, appname, accessbility_folder, results_outputs):
     zip_folder = os.path.join(tmp_folder + "/export")
 
     if os.path.exists(zip_folder):
-
         for zip in os.listdir(zip_folder):
             if zip.endswith('.zip'):
                 os.system('mv "%s/%s" "%s/%s.zip"'%(zip_folder,zip,issue_path,activity))
@@ -141,7 +142,6 @@ def collect_results(activity, appname, accessbility_folder, results_outputs):
 
     clean_screenshots = adb + ' shell rm -rf /data/data/%s/files/screenshots' % (scanner_pkg)
     os.system(clean_screenshots)
-
 
 def check_current_screen():
     cmd = adb + " shell dumpsys activity activities | grep mResumedActivity"
@@ -199,11 +199,13 @@ def check_current_screen_new(activity, appname, results_outputs):
         return 'abnormal'
 
 def explore(activity, appname, results_folder, results_outputs):
+
     current = check_current_screen_new(activity, appname, results_outputs)
     if current == 'abnormal':
         # click home and click 'ok' if crashes (two kinds of 'ok's)
         os.system(adb + ' shell input tap 540 1855')
         time.sleep(1)
+
         #os.system(adb + ' shell input tap 899 1005')
         #os.system(adb + ' shell input tap 165 990')
         #time.sleep(1)
@@ -267,6 +269,7 @@ def extract_activity_action(path):
             flag = 0
         else:
             continue
+
     return d
 
 def get_full_activity(component):
@@ -279,6 +282,7 @@ def get_full_activity(component):
         activity = component.split('/')[0]+act
     else:
         activity = act
+
     return activity
 
 def convert(api, key, extras):
@@ -313,6 +317,7 @@ def get_act_extra_paras(activity):
                 return extras
 
 def startAct(component, action, cate, appname, results_folder, results_outputs):
+
     clean_logcat()
     cmd = adb + ' shell am start -S -n %s' % component
     if not action == '':
@@ -321,7 +326,6 @@ def startAct(component, action, cate, appname, results_folder, results_outputs):
         cmd = cmd + ' -c ' + cate
 
     activity = get_full_activity(component)
-
     extras = get_act_extra_paras(activity)
 
     if extras != None:
@@ -358,6 +362,7 @@ def parseManifest(new_apkpath, apk_name, results_folder, decompilePath, results_
     pairs = extract_activity_action(manifestPath)
 
     all_activity_num = len(pairs.keys())
+
     #save_activity_to_csv(accessbility_folder, apk_name,  pkg, all_activity_num)
 
     # for activity, other in pairs.items():
@@ -381,9 +386,10 @@ def parseManifest(new_apkpath, apk_name, results_folder, decompilePath, results_
         startAct(component, '', '', apk_name, results_folder, results_outputs)
 
     if not os.path.exists(results_outputs + '/' + apk_name + '/screenshot'):
+
         return
 
-    # get some statistics
+    # Get statistics
     launched_act_num = int(
         commands.getoutput('ls %s | wc -l' % (results_outputs + '/' + apk_name + '/screenshot')).split('\n')[0])
     act_not_launched = int(all_activity_num - launched_act_num)
@@ -420,12 +426,14 @@ def exploreActivity(new_apkpath, apk_name, results_folder, emulator, tmp_file, s
 
     global adb
     adb = "adb -s %s"%(emulator)
+
     global tmp_dir
     tmp_dir = tmp_file
+
     global act_paras_file
     act_paras_file = storydroid
 
-    decompilePath = os.path.join(results_folder, "apktool")  # decompiled app path (apktool handled)
+    decompilePath = os.path.join(results_folder, "apktool")  # Decompiled app path (apktool handled)
     results_outputs = os.path.join(results_folder, "outputs")
     installErrorAppPath = os.path.join(results_folder, "install-error-apks")
 
@@ -436,7 +444,7 @@ def exploreActivity(new_apkpath, apk_name, results_folder, emulator, tmp_file, s
     if not os.path.exists(installErrorAppPath):
         os.makedirs(installErrorAppPath)
 
-    ### the pkg is the real pkg
+    ### The pkg is the real pkg
     result = installAPP(new_apkpath, apk_name, results_folder)
 
     if result == 'Failure':
@@ -444,6 +452,7 @@ def exploreActivity(new_apkpath, apk_name, results_folder, emulator, tmp_file, s
         copy_org_apk = "mv %s %s"%(new_apkpath, installErrorAppPath)
         commands.getoutput(copy_org_apk)
         # Collect the install error apks
+
         return
 
     parseManifest(new_apkpath, apk_name, results_folder, decompilePath, results_outputs)

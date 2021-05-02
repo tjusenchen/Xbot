@@ -1,4 +1,5 @@
 '''
+Authors: Sen Chen and Lingling Fan
 input: an apk
 output: a repackaged apk
 '''
@@ -39,6 +40,7 @@ def sign_apk(apk_name, decompileAPKPath, repackagedAppPath):
     #optiName = repackapp + "_z" + ".apk"
     repackAppPath = os.path.join(decompileAPKPath + '/dist', repackName)
     sign_apk = os.path.join(repackagedAppPath, resign_appName)
+
     #optappPath = os.path.join(run.decompilePath, repackapp, "dist", optiName)
     #cmd = "zipalign -v 4 {0} {1}".format(repackAppPath, optappPath)
     #os.system(cmd)

@@ -1,3 +1,8 @@
+'''
+
+Authors: Sen Chen and Lingling Fan
+'''
+
 import commands
 import csv
 import os
@@ -82,11 +87,25 @@ def execute(apk_path, apk_name):
         #     ### UICrawler, note that the para is results_folder instead of accessibility_folder
         #     exploreAct_uicrawler.exploreActivity(new_apkpath, apk_name, results_folder, emulator, tmp_file, paras_path)
 
-def run_soot(apk_path, pkg): # Get bundle data for UI page rendering
-    getBundle = config_folder + '/run_soot.jar'
+def run_soot(apk_path, pkg): #Get bundle data for UI page rendering
+
+    #soot_jar= config_folder + '/run_soot.jar' # Jar path
+    soot_file = 'run_soot.run' # Binary file name
     os.chdir(config_folder)
-    print java_home_path
-    os.system('java -jar %s %s %s %s %s %s %s' % (getBundle, storydroid_folder, apk_path, pkg, java_home_path, sdk_platform_path, lib_home_path))
+
+    '''
+    If uses jar
+    '''
+    #os.system('java -jar %s %s %s %s %s %s %s' % (soot_jar, storydroid_folder, apk_path, pkg, java_home_path, sdk_platform_path, lib_home_path))
+
+    '''
+    If uses binary
+    '''
+    print './%s %s %s %s %s %s %s' % (soot_file, storydroid_folder, apk_path, pkg,
+                                                  java_home_path, sdk_platform_path, lib_home_path)
+    os.system('./%s %s %s %s %s %s %s' % (soot_file, storydroid_folder, apk_path, pkg,
+                                                  java_home_path, sdk_platform_path, lib_home_path))
+
 
 def get_pkg(apk_path): # This version has a problem about pkg, may inconsist to the real pkg
     cmd = "aapt dump badging %s | grep 'package' | awk -v FS=\"'\" '/package: name=/{print$2}'" % apk_path
@@ -111,6 +130,7 @@ def remove_folder(apkname, decompilePath):
             else:
                 os.remove(rm_path)
 
+
 if __name__ == '__main__':
 
     createOutputFolder()  # Create the folders if not exists
@@ -134,7 +154,10 @@ if __name__ == '__main__':
 
             print '======= Starting ' + apk_name + ' ========='
 
-            '''Get Bundle Data'''
+            '''
+            Get Bundle Data
+            Trade off by users, open or close
+            '''
             #run_soot(apk_path, pkg) # get intent parameters
 
             global paras_path
