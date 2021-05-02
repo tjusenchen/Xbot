@@ -25,3 +25,4 @@ Accessibility issue gallery and samples:
 https://sites.google.com/view/mobile-accessibility/
 
 ## Paper
+Accessible or Not? An Empirical Investigation of Android App Accessibility
