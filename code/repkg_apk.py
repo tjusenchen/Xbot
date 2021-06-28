@@ -3,6 +3,7 @@ Authors: Sen Chen and Lingling Fan
 input: an apk
 output: a repackaged apk
 '''
+
 import os
 import shutil
 import commands

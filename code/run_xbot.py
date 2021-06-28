@@ -1,5 +1,4 @@
 '''
-
 Authors: Sen Chen and Lingling Fan
 '''
 
@@ -20,18 +19,21 @@ apkPath = sys.argv[2] # APK folder
 #apkPath = "/Users/chensen/Tools/xbot/icse-mulapks/"
 #apkPath = "/home/senchen/Desktop/uicrawler/apks/"  # Store the original app
 #apkPath = "/home/dell/Tools/Xbot/apks-1/"
+#apkPath = "/home/senchen/Engines/Xbot/main-folder/apks/"
 
 #java_home_path = '/home/dell/tools/jdk1.8.0_45'
-#java_home_path = '/usr/lib/jvm/jdk1.8.0_45' # For Ubuntu
-java_home_path = '/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/' # For Macbook
+java_home_path = '/usr/lib/jvm/jdk1.8.0_45' # For Ubuntu
+#java_home_path = '/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/' # For Macbook
 
 #sdk_platform_path = '/home/dell/Tools/Xbot/config/libs/android-platforms/'
-#sdk_platform_path = '/home/senchen/Tools/xbot/config/libs/android-platforms/' # For Ubuntu
-sdk_platform_path = '/Users/chensen/Tools/xbot/config/libs/android-platforms/' # For Macbook
+#sdk_platform_path = '/home/senchen/Tools/xbot/config/libs/android-platforms/' # For Ubuntu (NTU-Computer)
+sdk_platform_path = '/home/senchen/Engines/Xbot/main-folder/config/libs/android-platforms/' # For Ubuntu (TJU-Computer)
+#sdk_platform_path = '/Users/chensen/Tools/xbot/config/libs/android-platforms/' # For Macbook
 
 #lib_home_path = '/home/dell/Tools/Xbot/config/libs/'
-#lib_home_path = '/home/senchen/Tools/xbot/config/libs/' # For Ubuntu
-lib_home_path = '/Users/chensen/Tools/xbot/config/libs/' # For Macbook
+#lib_home_path = '/home/senchen/Tools/xbot/config/libs/' # For Ubuntu (NTU-Computer)
+lib_home_path = '/home/senchen/Engines/Xbot/main-folder/config/libs/' # For Ubuntu (TJU-Computer)
+#lib_home_path = '/Users/chensen/Tools/xbot/config/libs/' # For Macbook
 
 accessbility_folder = os.path.dirname(os.path.dirname(apkPath)) # Main folder of project
 
