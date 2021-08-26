@@ -12,12 +12,17 @@ We have made the source code of Xbot and the corresponding dataset publicly avai
 ## Usage
 Python run_xbot.py [emulator_name] [apk(s)_folder]
 
-## Dataset
-The accessibility issues detected by Xbot and used in our study: https://drive.google.com/drive/folders/1rTJfn_8cXaNsdoYBRNGIcuYhOPrZ6vEv?usp=sharing
-
 ## Website
 Accessibility issue gallery and samples:
 https://sites.google.com/view/mobile-accessibility/
 
 ## Paper
 [1] Accessible or Not? An Empirical Investigation of Android App Accessibility
+
+@inproceedings{chen2019storydroid,
+  title={Accessible or Not? An Empirical Investigation of Android App Accessibility},
+  author={Chen, Sen and Chen, Chunyang and Fan, Lingling and Fan, Mingming and Zhan, Xian and Liu, Yang},
+  booktitle={IEEE Transactions on Software Engineering (TSE)},
+  year={2021},
+  organization={IEEE}
+}
