@@ -28,4 +28,4 @@ https://sites.google.com/view/mobile-accessibility/
 }
 ```
 ## Contact
-[Sen Chen](https://sen-chen.github.io/)All Copyright Reserved.
+[Sen Chen](https://sen-chen.github.io/) All Copyright Reserved.
