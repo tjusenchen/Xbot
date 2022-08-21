@@ -56,7 +56,13 @@ def sign_apk(apk_name, decompileAPKPath, repackagedAppPath):
     cmd1 = "echo '123456\r'|{0} ".format(cmd)
 
     #returncode = \
-    os.system(cmd1)
+    # os.system(cmd1)
+    signlog = commands.getoutput(cmd1)
+    for line in signlog.split("\n"):
+        if 'jar signed.' in line:
+            print 'Sign success...................................................'
+            return "success"
+    return "fail"
     #return returncode
 
 def rename(apkname, repackagedAppPath):
@@ -172,18 +178,18 @@ def startRepkg(apk_path, apkname, results_folder, config_folder):
 
     print "signing..."
     # Sign the modified apk
-    sign_apk(apkname, decompileAPKPath, repackagedAppPath)
+    signlabel = sign_apk(apkname, decompileAPKPath, repackagedAppPath)
 
-    # if not msg == "0":
-    #     # Copy original app to repackage folder
-    #     copy_org_apk = "mv %s %s"%(apk_path, repackagedAppPath)
-    #     commands.getoutput(copy_org_apk)
-    #
-    #     # Copy original app to build-error-apks
-    #     copy_org_apk = "mv %s %s"%(apk_path, signErrorAppPath)
-    #     commands.getoutput(copy_org_apk)
-    #
-    #     return 'sign error'
+    if signlabel == "fail":
+        # Copy original app to repackage folder
+        copy_org_apk = "mv %s %s"%(apk_path, repackagedAppPath)
+        commands.getoutput(copy_org_apk)
+
+        # Copy original app to build-error-apks
+        copy_org_apk = "mv %s %s"%(apk_path, signErrorAppPath)
+        commands.getoutput(copy_org_apk)
+
+        return 'sign error'
 
     # Rename the signed apk
     rename(apkname, repackagedAppPath)
