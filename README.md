@@ -9,6 +9,17 @@ We have made the source code of Xbot and the corresponding dataset publicly avai
 * Android environment: adb, aapt
 * Java environment (jdk): jdk1.8.0_45
 
+gedit ~/.bashrc and configure the jdk and sdk:
+
+export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_45
+export JAVA_BIN=/usr/lib/jvm/jdk1.8.0_45/bin
+export CLASSPATH=.:${JAVA_HOME}/lib/dt.jar:${JAVA_HOME}/lib/tools.jar
+export PATH=$PATH:${JAVA_HOME}/bin
+export PATH=$PATH:/home/dell/Android/Sdk/tools
+export PATH=$PATH:/home/dell/Android/Sdk/platform-tools
+export PATH=$PATH:/home/dell/Android/Sdk/emulator
+export JAVA_HOME JAVA_BIN CLASSPATH PATH 
+
 ## Accessibility Scanner Configuration
 
 https://user-images.githubusercontent.com/23289910/186054800-5ae10f00-b19e-44e3-801b-7f4d85336efc.mp4
