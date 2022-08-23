@@ -9,6 +9,10 @@ We have made the source code of Xbot and the corresponding dataset publicly avai
 * Android environment: adb, aapt
 * Java environment (jdk): jdk1.8.0_45
 
+## Accessibility Scanner Configuration
+
+https://user-images.githubusercontent.com/23289910/186054800-5ae10f00-b19e-44e3-801b-7f4d85336efc.mp4
+
 ## Usage
 Python run_xbot.py [emulator_name] [apk(s)_folder]
 
