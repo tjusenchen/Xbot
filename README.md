@@ -27,6 +27,10 @@ https://user-images.githubusercontent.com/23289910/186054800-5ae10f00-b19e-44e3-
 ## Usage
 Python run_xbot.py [emulator_name] [apk(s)_folder]
 
+## Executation Record
+
+https://user-images.githubusercontent.com/23289910/186335738-18a6838c-1176-4af1-957e-c971d73a3737.mp4
+
 ## Website
 Accessibility issue gallery and samples:
 https://sites.google.com/view/mobile-accessibility/
