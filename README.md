@@ -6,7 +6,7 @@ We have made the source code of Xbot and the corresponding dataset publicly avai
 * Python: 2.7
 * APKTool: 2.6.1 (Please use the newest version of APKTool)
 * Android emulator provided by Android Studio 4.2.2： X86_64, Android 7.1.1, Google APIs, 1920 * 1080
-* Android environment: adb, aapt
+* Android environment: adb, aapt (important)
 * Java environment (jdk): jdk1.8.0_45
 * Open ~/.bashrc and configure the path of JDK and SDK (Replace by your own paths):
 ```
