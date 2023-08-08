@@ -1,5 +1,7 @@
+# NEW: We developed a tool named [IRIS](https://github.com/iris-mobile-accessibility-repair/iris-mobil) based on Xbot to automatically repair the color-based accessibility issues in Android apps. 
+
 # Xbot
-We have made the source code of Xbot and the corresponding dataset publicly available. We hope this project can benefit other researchers or practiontiners in the field of accessibility testing of Android apps. Please feel free to contact us if you have any questions and issues. We will continue to maintain this project. Thanks for your feedback.
+We have made the source code of Xbot and the corresponding dataset publicly available. We hope this project can benefit other researchers or practitioners in the field of accessibility testing of Android apps. Please feel free to contact us if you have any questions or issues. We will continue to maintain this project. Thanks for your feedback.
 
 ## Environment Configuration
 * Ubuntu/Macbook
@@ -27,7 +29,7 @@ https://user-images.githubusercontent.com/23289910/186054800-5ae10f00-b19e-44e3-
 ## Usage
 Python run_xbot.py [emulator_name] [apk(s)_folder]
 
-## Executation Record
+## Execution Record
 
 https://user-images.githubusercontent.com/23289910/186335738-18a6838c-1176-4af1-957e-c971d73a3737.mp4
 
