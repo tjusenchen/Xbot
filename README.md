@@ -1,3 +1,6 @@
+
+# NEW: We developed a tool named [A11yScan]([https://github.com/iris-mobile-accessibility-repair/iris-mobile](https://github.com/A11yScan/A11yScan.git)) based on Xbot to automatically detect accessibility issues in Android apps. 
+
 # NEW: We developed a tool named [IRIS](https://github.com/iris-mobile-accessibility-repair/iris-mobile) based on Xbot to automatically repair the color-based accessibility issues in Android apps. 
 
 # Xbot
